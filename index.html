@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Hound, Happy Human | Expert Dog Walking Services</title>
+    <style>
+        :root {
+            --primary-navy: #0f2c42;
+            --accent-blue: #38bdf8;
+            --light-bg: #f4f7f9;
+            --text-dark: #1e293b;
+            --text-muted: #557085;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-text h1 {
+            margin: 0;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            font-size: 0.85rem;
+            color: #93c5fd;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .top-contact {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9rem;
+        }
+
+        .top-contact a {
+            color: #93c5fd;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .top-contact a:hover {
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 44, 66, 0.85), rgba(15, 44, 66, 0.85)), url('https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            color: #cbd5e1;
+        }
+
+        .cta-button {
+            background-color: var(--accent-blue);
+            color: var(--primary-navy);
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.05rem;
+            display: inline-block;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #0ea5e9;
+            transform: translateY(-2px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .services h2 {
+            color: var(--primary-navy);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            text-align: left;
+            border-top: 4px solid var(--accent-blue);
+        }
+
+        .service-card h3 {
+            color: var(--primary-navy);
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background-color: #e2e8f0;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            color: var(--primary-navy);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        /* Special Offers Boxes */
+        .discounts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto 40px auto;
+            text-align: left;
+        }
+
+        .discount-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--accent-blue);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .discount-card h3 {
+            color: var(--primary-navy);
+            font-size: 1.15rem;
+            margin: 0 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .discount-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 5px solid var(--primary-navy);
+            width: 300px;
+            box-sizing: border-box;
+        }
+
+        .pricing-card.featured {
+            border-top: 5px solid var(--accent-blue);
+        }
+
+        .pricing-card h3 {
+            color: var(--primary-navy);
+            font-size: 1.35rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            flex-grow: 1;
+        }
+
+        .pricing-features li::before {
+            content: "✓ ";
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .pricing-btn {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .pricing-btn:hover {
+            background-color: #1e3a5f;
+        }
+
+        .pricing-card.featured .pricing-btn {
+            background-color: var(--accent-blue);
+            color: var(--primary-navy);
+        }
+
+        .pricing-card.featured .pricing-btn:hover {
+            background-color: #0ea5e9;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #e9eff4;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            color: var(--primary-navy);
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+        }
+
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            flex: 1;
+            min-width: 280px;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            font-style: italic;
+            color: var(--text-muted);
+            text-align: left;
+        }
+
+        .testimonial-card cite {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: var(--primary-navy);
+            font-style: normal;
+        }
+
+        /* Schedule Section */
+        .schedule-section {
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .schedule-container {
+            background: var(--white);
+            width: 100%;
+            max-width: 700px;
+            padding: 50px 40px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            text-align: center;
+        }
+
+        .schedule-container h2 {
+            color: var(--primary-navy);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .schedule-container p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-navy);
+            color: #93c5fd;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo-section">
+            <div class="logo-text">
+                <h1>HAPPY HOUND</h1>
+                <span>HAPPY HUMAN</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#schedule">Book a Walk</a>
+        </nav>
+        <div class="top-contact">
+            <span>📞 <a href="tel:07762284913">0776 228 4913</a></span>
+            <span>✉️ <a href="mailto:bookings.h4@gmail.com">bookings.h4@gmail.com</a></span>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Happy Hound, Happy Human.</h1>
+        <p>Expert, Caring Dog Walking Services tailored for your pet's ultimate physical and mental well-being.</p>
+        <a href="https://calendar.app.google/XQuU417zMQ4rE3JU6" target="_blank" rel="noopener noreferrer" class="cta-button">Book Your First Walk Today!</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <h2>Our Professional Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Individual Walks</h3>
+                <p>Dedicated 1-on-1 attention designed for focused exercise, safety, and customized pace for your dog.</p>
+            </div>
+            <div class="service-card">
+                <h3>Puppy Care</h3>
+                <p>Gentle check-ins, socialization, feeding, and basic training support for your newest furry family member.</p>
+            </div>
+            <div class="service-card">
+                <h3>Group Adventures</h3>
+                <p>Social pack walks in secure nature trails to build confidence, great behaviors, and canine friendships.</p>
+            </div>
+            <div class="service-card">
+                <h3>Senior Dog Walks</h3>
+                <p>Low-impact, slow-paced strolls adjusted precisely to accommodate older dogs and joint health needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <h2>Pricing & Packages</h2>
+        <p class="pricing-subtitle">Transparent rates with comprehensive features included in every service.</p>
+        
+        <div class="discounts-container">
+            <div class="discount-card">
+                <h3>🎉 First Booking Discount</h3>
+                <p>Enjoy <strong>25% off</strong> your very first booking with us!</p>
+            </div>
+            <div class="discount-card">
+                <h3>🐾 Multi-Pet Discount</h3>
+                <p>Get <strong>25% off</strong> for your 2nd pet on any shared service.</p>
+            </div>
+            <div class="discount-card">
+                <h3>⭐ Loyalty Rewards</h3>
+                <p>Every <strong>5th 60-minute walk</strong> is <strong>half price</strong>!</p>
+            </div>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>30-Minute Walk</h3>
+                <div class="price">£15</div>
+                <ul class="pricing-features">
+                    <li>30 Minutes active exercise</li>
+                    <li>Fresh water replenishment</li>
+                    <li>Basic wipe down after muddy walks</li>
+                    <li>GPS route summary post-walk</li>
+                </ul>
+                <a href="https://calendar.app.google/XQuU417zMQ4rE3JU6" target="_blank" rel="noopener noreferrer" class="pricing-btn">Book 30-Min Walk</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <h3>60-Minute Walk</h3>
+                <div class="price">£22</div>
+                <ul class="pricing-features">
+                    <li>60 Full minutes of exploration</li>
+                    <li>Individual or social pack options</li>
+                    <li>Live GPS tracking viewable by owner</li>
+                    <li>Action photos and video updates</li>
+                    <li>Treats provided (with permission)</li>
+                </ul>
+                <a href="https://calendar.app.google/XQuU417zMQ4rE3JU6" target="_blank" rel="noopener noreferrer" class="pricing-btn">Book 60-Min Walk</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Puppy Drop-In & Care</h3>
+                <div class="price">£18</div>
+                <ul class="pricing-features">
+                    <li>30-Minute home visit</li>
+                    <li>Feeding and fresh water</li>
+                    <li>Garden playtime & toilet breaks</li>
+                    <li>Basic training reinforcement</li>
+                </ul>
+                <a href="https://calendar.app.google/XQuU417zMQ4rE3JU6" target="_blank" rel="noopener noreferrer" class="pricing-btn">Book Puppy Care</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Doggie Day Care (Full Day)</h3>
+                <div class="price">£18.00 – £35.00</div>
+                <ul class="pricing-features">
+                    <li>Supervised daytime care (approx. 6 hours)</li>
+                    <li>Multiple walks included</li>
+                    <li>Social play with other dogs</li>
+                    <li>Safe and comfortable environment</li>
+                </ul>
+                <a href="https://calendar.app.google/XQuU417zMQ4rE3JU6" target="_blank" rel="noopener noreferrer" class="pricing-btn">Book Day Care</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Overnight Pet Sitting</h3>
+                <div class="price">£30.00 – £60.00 <span style="font-size: 1rem; font-weight: normal;">/ night</span></div>
+                <ul class="pricing-features">
+                    <li>In-home sitting care</li>
+                    <li>24/7 care and companionship</li>
+                    <li>Evening and morning routines maintained</li>
+                    <li>Regular photo updates for peace of mind</li>
+                </ul>
+                <a href="https://calendar.app.google/XQuU417zMQ4rE3JU6" target="_blank" rel="noopener noreferrer" class="pricing-btn">Book Overnight Stay</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>❤️ Testimonials</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"I love how easy booking is, and Barnaby always comes back happy and relaxed after his walks."</p>
+                <cite>— Barnaby's Human</cite>
+            </div>
+            <div class="testimonial-card">
+                <p>"Fantastic team! Lola looks forward to her new daily routine so much. Highly professional service."</p>
+                <cite>— Lola's Human</cite>
+            </div>
+            <div class="testimonial-card">
+                <p>"I love the fact that the Happy Hound walkers are all equipped with cameras allowing me to log in and see what my dog's been up to..."</p>
+                <cite>— Kimchi's Human</cite>
+            </div>
+        </div>
+        <a href="reviews.html" class="cta-button" style="background-color: var(--primary-navy); color: var(--white);">View All Reviews 🌟</a>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule-section">
+        <div class="schedule-container">
+            <h2>Schedule a Walk</h2>
+            <p>Ready to get your pup moving? Click below to pick your time slot instantly!</p>
+            <a href="https://calendar.app.google/XQuU417zMQ4rE3JU6" target="_blank" rel="noopener noreferrer" class="cta-button">
+                Open Booking Calendar 📅
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">TikTok</a>
+        </div>
+        <p>Email: <a href="mailto:bookings.h4@gmail.com" style="color: #93c5fd; text-decoration: none;">bookings.h4@gmail.com</a> | Mobile: <a href="tel:07762284913" style="color: #93c5fd; text-decoration: none;">0776 228 4913</a></p>
+        <p>&copy; 2026 Happy Hound, Happy Human. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
