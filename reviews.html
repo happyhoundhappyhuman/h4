@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews | Happy Hound, Happy Human</title>
+    <style>
+        :root {
+            --primary-navy: #0f2c42;
+            --accent-blue: #38bdf8;
+            --light-bg: #f4f7f9;
+            --text-dark: #1e293b;
+            --text-muted: #557085;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-text h1 {
+            margin: 0;
+            font-size: 1.25rem;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            font-size: 0.85rem;
+            color: #93c5fd;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-blue);
+        }
+
+        /* Main Content */
+        .reviews-main {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .reviews-main h2 {
+            color: var(--primary-navy);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .reviews-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            margin-bottom: 25px;
+            border-left: 5px solid var(--accent-blue);
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .review-card p {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0 0 15px 0;
+        }
+
+        .review-card cite {
+            display: block;
+            font-weight: bold;
+            color: var(--primary-navy);
+            font-style: normal;
+        }
+
+        /* Leave a Review Section / Form */
+        .review-form-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            margin-top: 50px;
+            border-top: 5px solid var(--accent-blue);
+        }
+
+        .review-form-container h3 {
+            color: var(--primary-navy);
+            margin-top: 0;
+            font-size: 1.75rem;
+            margin-bottom: 10px;
+        }
+
+        .review-form-container p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-navy);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .submit-button {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: inline-block;
+        }
+
+        .submit-button:hover {
+            background-color: #1e3a5f;
+        }
+
+        /* Success Message Styling */
+        #success-message {
+            display: none;
+            background-color: #d1fae5;
+            color: #065f46;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        /* Back to Home Button */
+        .back-home {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .back-button {
+            background-color: var(--primary-navy);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            background-color: #1e3a5f;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-navy);
+            color: #93c5fd;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo-section">
+            <div class="logo-text">
+                <h1>HAPPY HOUND</h1>
+                <span>HAPPY HUMAN</span>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a href="https://happyhoundhappyhuman.github.io/h4/index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="reviews.html" class="active">Reviews</a>
+            <a href="https://happyhoundhappyhuman.github.io/h4/index.html#pricing">Pricing</a>
+            <a href="https://happyhoundhappyhuman.github.io/h4/index.html#schedule">Book a Walk</a>
+        </nav>
+    </header>
+
+    <!-- Reviews Content -->
+    <main class="reviews-main">
+        <h2>Client Testimonials</h2>
+        <p class="reviews-subtitle">Here is what our wonderful clients have to say about our dog walking and pet care services.</p>
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"I love how easy booking is, and Barnaby always comes back happy and relaxed after his walks."</p>
+            <cite>— Barnaby's Human</cite>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Fantastic team! Lola looks forward to her new daily routine so much. Highly professional service."</p>
+            <cite>— Lola's Human</cite>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"I love the fact that the Happy Hound walkers are all equipped with cameras allowing me to log in and see what my dog's been up to, and they even offer GPS tracking so I get peace of mind knowing where my precious pup is at all times as well as being able to check she is getting the exercise she needs!!"</p>
+            <cite>— Kimchi's Human</cite>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Absolute lifesavers! Professional, reliable, and my pup gets so excited every time they arrive."</p>
+            <cite>— Winston's Human</cite>
+        </div>
+
+        <!-- Leave a Review Form Section -->
+        <div class="review-form-container">
+            <h3>Leave a Review</h3>
+            <p>Had a great experience with Happy Hound, Happy Human? Let us know how we did!</p>
+            
+            <div id="success-message">Thank you! Your review has been submitted successfully.</div>
+
+            <!-- Replace YOUR_FORMSPREE_ENDPOINT with your actual endpoint URL from formspree.io -->
+            <form id="reviewForm" action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST" onsubmit="handleReviewSubmit(event)">
+                <!-- Custom Subject line for Formspree -->
+                <input type="hidden" name="_subject" value="Review">
+
+                <div class="form-group">
+                    <label for="reviewerName">Your Name / Pet's Name (e.g., Max's Human)</label>
+                    <input type="text" id="reviewerName" name="reviewerName" required placeholder="Enter your name">
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewerEmail">Email Address</label>
+                    <input type="email" id="reviewerEmail" name="reviewerEmail" required placeholder="Enter your email address">
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewRating">Rating</label>
+                    <select id="reviewRating" name="reviewRating" required>
+                        <option value="★★★★★">★★★★★ (5/5 - Excellent)</option>
+                        <option value="★★★★☆">★★★★☆ (4/5 - Great)</option>
+                        <option value="★★★☆☆">★★★☆☆ (3/5 - Good)</option>
+                        <option value="★★☆☆☆">★★☆☆☆ (2/5 - Fair)</option>
+                        <option value="★☆☆☆☆">★☆☆☆☆ (1/5 - Poor)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="reviewText">Your Review</label>
+                    <textarea id="reviewText" name="reviewText" rows="4" required placeholder="Tell us about your experience..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Review</button>
+            </form>
+        </div>
+
+        <div class="back-home">
+            <a href="https://happyhoundhappyhuman.github.io/h4/index.html" class="back-button">← Back to Home Page</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Email: <a href="mailto:bookings.h4@gmail.com" style="color: #93c5fd; text-decoration: none;">bookings.h4@gmail.com</a> | Mobile: <a href="tel:07762284913" style="color: #93c5fd; text-decoration: none;">0776 228 4913</a></p>
+        <p>&copy; 2026 Happy Hound, Happy Human. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to handle dynamic form submission and emailing -->
+    <script>
+        async function handleReviewSubmit(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const formData = new FormData(form);
+
+            // Grab values for dynamic webpage update
+            const name = document.getElementById('reviewerName').value;
+            const rating = document.getElementById('reviewRating').value;
+            const text = document.getElementById('reviewText').value;
+
+            try {
+                // Submit form data asynchronously via Fetch to send the email
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Create new review card element dynamically
+                    const newCard = document.createElement('div');
+                    newCard.className = 'review-card';
+                    newCard.innerHTML = `
+                        <div class="stars">${rating}</div>
+                        <p>"${text}"</p>
+                        <cite>— ${name}</cite>
+                    `;
+
+                    // Insert the new review right above the form container
+                    const formContainer = document.querySelector('.review-form-container');
+                    formContainer.parentNode.insertBefore(newCard, formContainer);
+
+                    // Show success message and reset the form
+                    const successMsg = document.getElementById('success-message');
+                    successMsg.style.display = 'block';
+                    form.reset();
+
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMsg.style.display = 'none';
+                    }, 5000);
+                } else {
+                    alert('There was a problem submitting your review. Please try again.');
+                }
+            } catch (error) {
+                alert('Network error. Please check your connection and try again.');
+            }
+        }
+    </script>
+
+</body>
+</html>
